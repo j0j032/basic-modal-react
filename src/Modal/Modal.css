@@ -1,4 +1,4 @@
-.modal__bg {
+.bg {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,12 +11,12 @@
     background-color: rgba(0, 0, 0, 0.42);
 }
 
-.modal__container {
+.container {
     position: relative;
     z-index: 998;
 }
 
-.modal__closeBtn {
+.closeBtn {
     position: absolute;
     z-index: 1000;
     top: 24px;
@@ -31,15 +31,15 @@
     background: transparent;
 }
 
-.modal__closeBtn:hover {
+.closeBtn:hover {
     font-size: 23px;
 }
 
-.modal-wrapper {
+.wrapper {
     transition: opacity 300ms;
     will-change: opacity;
 }
 
-.modal-wrapper.animation {
+.wrapper.animation {
     opacity: 0;
 }

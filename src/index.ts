@@ -1,4 +1,4 @@
-import modal from "./Modal/modal";
-import useModal from "./Modal/useModal";
+import modal from './Modal/modal'
+import useModal from './Modal/useModal'
 
-export {modal, useModal}
+export { modal, useModal }
