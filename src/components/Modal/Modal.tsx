@@ -43,21 +43,14 @@ const ReactPortal = ({ children, wrapperId = 'react-portal-wrapper' }: ReactPort
 
 type ModalProps = {
   modalId?: string
-  children: React.ReactNode
   isOpen: boolean
   handleClose: () => void
   customBG?: React.CSSProperties
   customBtn?: React.CSSProperties
 }
 
-const Modal = ({
-  modalId = 'new-modal',
-  children,
-  isOpen,
-  handleClose,
-  customBG,
-  customBtn,
-}: ModalProps): React.ReactElement | null => {
+const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({
+  children, modalId = 'new-modal', isOpen, handleClose, customBG, customBtn}): React.ReactElement | null => {
   useEffect(() => {
     const closeOnEscapeKey = (e: KeyboardEvent) => (e.key === 'Escape' ? handleClose() : null)
     document.body.addEventListener('keydown', closeOnEscapeKey)
