@@ -1,6 +1,6 @@
 {
   "name": "basic-modal-react",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A basic modal container that give you the basic functionalities of a modal to wrap your component",
   "scripts": {
     "rollup": "rollup -c"

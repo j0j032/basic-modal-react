@@ -1,6 +1,5 @@
 # Basic Modal React
 
----
 
 We provide a modal wrapper built in typescript that offer you the basic modal functionalities to handle the components you want to display inside.
 
