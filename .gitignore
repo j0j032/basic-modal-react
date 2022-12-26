@@ -1,2 +1,6 @@
 # Project exclude paths
 /node_modules/
+.idea
+yarn-error.log
+basic-modal-react.iml
+/dist/

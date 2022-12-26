@@ -1,19 +1,31 @@
 {
   "name": "basic-modal-react",
-  "version": "0.0.1",
-  "description": "A basic modal container that give you the basic functionalities to wrap your component",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "A basic modal container that give you the basic functionalities of a modal to wrap your component",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "rollup": "rollup -c"
   },
   "keywords": [],
-  "author": "",
+  "author": "j0j032",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup": "^3.8.1",
+    "rollup-plugin-dts": "^5.1.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.4.1",
     "typescript": "^4.9.4"
-  }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts"
 }
