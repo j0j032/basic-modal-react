@@ -66,7 +66,7 @@ export const myExample = () => {
 
 `customBtn` an object that contains css properties | _**Optional**_
 
-`customBG` an object an object that contains css properties | _**Optional**_
+`customBG` an object that contains css properties | _**Optional**_
 
 #### About Modal Id
 
