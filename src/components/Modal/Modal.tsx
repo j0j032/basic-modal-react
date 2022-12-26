@@ -50,7 +50,7 @@ type ModalProps = {
   customBtn?: React.CSSProperties
 }
 
-export const Modal = ({
+const Modal = ({
   modalId = 'new-modal',
   children,
   isOpen,
@@ -81,3 +81,5 @@ export const Modal = ({
     </ReactPortal>
   )
 }
+
+export default Modal
