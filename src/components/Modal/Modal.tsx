@@ -1,4 +1,4 @@
-//import './Modal.css'
+import './Modal.css'
 import React, {useEffect, useLayoutEffect, useState} from 'react'
 import {createPortal} from "react-dom";
 
