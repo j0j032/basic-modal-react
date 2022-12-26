@@ -3,3 +3,4 @@
 .idea
 yarn-error.log
 basic-modal-react.iml
+/dist/
