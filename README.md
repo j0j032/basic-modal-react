@@ -71,7 +71,7 @@ export const myExample = () => {
 #### About Modal Id
 
 * if you don't pass it default is 'new-modal'
-* To display the modal we use reactPortal, react portal create a brand-new element behind your main wrapper (#root) 
+* To display the modal we use reactPortal, react portal create a brand-new element below your main wrapper (#root) 
 * if you want your modal to always be on top of your html tree, you can create a div in your index.html and give it an id.
 * Now, if you pass the same id to the `modalId` prop, it will target it and won't create a new div.
 
