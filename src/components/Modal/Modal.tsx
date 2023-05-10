@@ -1,6 +1,7 @@
 import './Modal.css'
 import React, {useEffect, useLayoutEffect, useState} from 'react'
 import {createPortal} from "react-dom";
+import {ModalChildProps} from "../../index";
 
 function createWrapper(wrapperId: string) {
   const wrapperElement = document.createElement('div')
@@ -41,16 +42,27 @@ const ReactPortal = ({ children, wrapperId = 'react-portal-wrapper' }: ReactPort
   return createPortal(children, wrapperElement)
 }
 
+
+
 type ModalProps = {
+  children: React.ReactNode | ((props: ModalChildProps) => React.ReactNode);
   modalId?: string
-  isOpen: boolean
-  handleClose: () => void
+  trigger: React.ReactNode
+  onClose?: () => void
   customBG?: React.CSSProperties
   customBtn?: React.CSSProperties
 }
 
 const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({
-  children, modalId = 'new-modal', isOpen, handleClose, customBG, customBtn}): React.ReactElement | null => {
+  children,trigger, onClose, modalId = 'new-modal', customBG, customBtn}): React.ReactElement | null => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const handleClose = () => {
+    setIsModalOpen(false)
+    if (onClose) onClose()
+  }
+  const handleOpen = () => setIsModalOpen(true)
+
   useEffect(() => {
     const closeOnEscapeKey = (e: KeyboardEvent) => (e.key === 'Escape' ? handleClose() : null)
     document.body.addEventListener('keydown', closeOnEscapeKey)
@@ -59,19 +71,23 @@ const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({
     }
   }, [handleClose])
 
-  if (!isOpen) return null
 
   return (
-    <ReactPortal wrapperId={modalId}>
-      <dialog onClick={handleClose} className='bg' style={customBG}>
-        <div onClick={(e) => e.stopPropagation()} className='container'>
-          <button onClick={handleClose} className='closeBtn' style={customBtn}>
-            ✕
-          </button>
-          {children}
-        </div>
-      </dialog>
-    </ReactPortal>
+      <>
+        <div onClick={handleOpen}>{trigger}</div>
+        {isModalOpen && (
+          <ReactPortal wrapperId={modalId}>
+            <dialog onClick={handleClose} className='bg' style={customBG}>
+              <div onClick={(e) => e.stopPropagation()} className='container'>
+                <button onClick={handleClose} className='closeBtn' style={customBtn}>
+                  ✕
+                </button>
+                {typeof children === "function" ? children({ closeModal: handleClose }) : children}
+              </div>
+            </dialog>
+          </ReactPortal>
+        )}
+      </>
   )
 }
 
