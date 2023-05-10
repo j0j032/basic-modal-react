@@ -1,17 +1,49 @@
 .bg {
     box-sizing: border-box;
+    border: none;
     display: flex;
-    //justify-content: center;
-    justify-content: flex-end;
-    //align-items: center;
-    align-items: flex-start;
     position: fixed;
-    z-index: 999;
+    z-index: 997;
     top: 0;
     left: 0;
     width: 100dvw;
     height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.42);
+}
+.position-center-center {
+    align-items: center;
+    justify-content: center;
+}
+.position-center-left {
+    align-items: center;
+    justify-content: flex-start;
+}
+.position-center-right {
+    align-items: center;
+    justify-content: flex-end;
+}
+.position-top-center {
+    align-items: flex-start;
+    justify-content: center;
+}
+.position-top-left {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.position-top-right {
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.position-bottom-center {
+    align-items: flex-end;
+    justify-content: center;
+}
+.position-bottom-left {
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.position-bottom-right {
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .container {
@@ -19,30 +51,16 @@
     z-index: 998;
 }
 
-.closeBtn {
-    position: absolute;
-    z-index: 1000;
-    top: 24px;
-    right: 24px;
-    font-size: 24px;
-    padding: 4px 6px;
-    cursor: pointer;
-    transition: scale 200ms ease-in-out;
-    color: black;
+.defaultCloseIcon{
+    background-color: transparent;
     border: none;
-    border-radius: 50px;
-    background: transparent;
+    outline: none;
+    padding: 0;
 }
 
-.closeBtn:hover {
-    font-size: 23px;
-}
-
-.wrapper {
-    transition: opacity 300ms;
-    will-change: opacity;
-}
-
-.wrapper.animation {
-    opacity: 0;
+.closeHandler {
+    position: absolute;
+    z-index: 999;
+    font-size: 14px;
+    cursor: pointer;
 }
