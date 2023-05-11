@@ -21,10 +21,9 @@ function App() {
     return (
         <div>
             <Modal trigger={<button>Open Modal with Form</button>}
-                   positionX='right'
+                   positionX='center'
                    positionY='center'
-                   backgroundColor='#181818'
-                   closeIconColor='#fff'
+                   closeIconColor='#262627'
             >
                 {({ closeModal }: ModalChildProps) => (
                     <div className='content'>

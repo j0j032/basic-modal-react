@@ -15,31 +15,41 @@ type ReactPortalProps = {
   children: React.ReactNode
 }
 const ReactPortal = ({ children, wrapperId = 'react-portal-wrapper' }: ReactPortalProps) => {
-  const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(null)
+    const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(null)
 
-  useLayoutEffect(() => {
-    let element: HTMLElement | null = document.getElementById(wrapperId),
-        systemCreated = false
-    if (!element) {
-      systemCreated = true
-      element = createWrapper(wrapperId)
-      requestAnimationFrame(() => {
-        element?.classList.remove('animation')
-      })
-    }
-    setWrapperElement(element)
+    useLayoutEffect(() => {
+        let element: HTMLElement | null = document.getElementById(wrapperId),
+            systemCreated = false
+        if (!element) {
+            systemCreated = true
+            element = createWrapper(wrapperId)
+        }
+        setWrapperElement(element)
 
-    return () => {
-      if (systemCreated && element?.parentNode) {
-        element.parentNode.removeChild(element)
-      }
-    }
-  }, [wrapperId])
+        return () => {
+            if (systemCreated && element?.parentNode) {
+                element.parentNode.removeChild(element)
+            }
+        }
+    }, [wrapperId])
 
-  if (wrapperElement === null) return null
+    useEffect(() => {
+        if (wrapperElement) {
+            const timeoutId = setTimeout(() => {
+                wrapperElement.classList.add('visible');
+            }, 50);
 
-  return createPortal(children, wrapperElement)
-}
+            return () => {
+                clearTimeout(timeoutId);
+            };
+        }
+    }, [wrapperElement]);
+
+    if (wrapperElement === null) return null;
+
+    return createPortal(children, wrapperElement);
+};
+
 
 
 type CloseHandlerPosition = {
@@ -70,6 +80,7 @@ const validateProps = (props: ModalProps) => {
     if (!validColor(props.backgroundColor || '')) {
         throw new Error('Invalid Modal background color')
     }
+
     // check if position is valid
     if (!['center', 'top', 'bottom'].includes(props.positionY || '')) {
         throw new Error('Invalid Modal positionY')
@@ -80,7 +91,7 @@ const validateProps = (props: ModalProps) => {
 }
 
 const CloseButton = ({ color = '#1F1F1F'}: { color?: string}) => (
-    <button className='defaultCloseIcon' style={{ color }}>✕</button>
+    <button className='defaultCloseIcon' style={{ color }}>&#215;</button>
 )
 
 const Modal: React.FC<ModalProps> = ({

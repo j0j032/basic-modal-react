@@ -61,6 +61,15 @@
 .closeHandler {
     position: absolute;
     z-index: 999;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
+}
+
+.modal-wrapper.animation {
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+}
+
+.modal-wrapper.animation.visible {
+    opacity: 1;
 }
