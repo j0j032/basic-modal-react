@@ -1,1 +1,1 @@
-export {default as Modal} from './TriggerWithModal'
+export {default as TriggerWithModal} from './TriggerWithModal'
