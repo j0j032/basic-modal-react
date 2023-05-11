@@ -18,7 +18,7 @@ You place it instead of your trigger component and pass your content as children
 - Local state: you don't have to pass any state to handle the opening and closing of the modal, so you prevent useless re-rendering.
 - Portal: the modal is rendered in a portal, so it's not part of your main html tree.
 - Fits your UI => To use it, you have to pass your trigger component (button, icon, image, etc...) and the component you want to display as children.
-- Basics Modal features:
+- Basics TriggerWithModal features:
   - A fade background (customizable) that close the modal when clicked
   - A close icon-button (X by default) but you can pass and move your own component
   - Close on escape key
@@ -42,22 +42,22 @@ You place it instead of your trigger component and pass your content as children
 Basic usage:
 
 ```js
-import {Modal} from 'basic-modal-react'
+import {TriggerWithModal} from 'basic-modal-react'
 
 export const myExample = () => {
     
     return (
         <>
-            <Modal trigger={<YourButton label='Open Modal'}/>}>
+            <TriggerWithModal trigger={<YourButton label='Open'/>}>
                 <YourComponent/>
-            </Modal>
+            </TriggerWithModal>
         </>
     )
 }
 ```
 Controlled usage (example: if you want to close the modal after a form submission):
 ```js
-import {Modal, ModalChildProps} from 'basic-modal-react'
+import {TriggerWithModal, ModalChildProps} from 'basic-modal-react'
 
 export const myExample = () => {
 	
@@ -68,14 +68,14 @@ export const myExample = () => {
     
     return (
         <>
-          <Modal trigger={<button>Open Modal with Form</button>}>
+          <TriggerWithModal trigger={<button>Open Form</button>}>
             {({ closeModal }: ModalChildProps) => (
                     <form >
                       {/* ... */}
                       <button onClick={() => handleSubmit(closeModal)}>Submit</button>
                     </form>
             )}
-          </Modal>
+          </TriggerWithModal>
         </>
     )
 }
@@ -90,7 +90,7 @@ export const myExample = () => {
 `modalID` | _**Optional**_ | you can provide an id if you need to.
 
 
-#### About Modal Id
+#### About TriggerWithModal Id
 
 * if you don't pass it default is 'modal'
 * To display the modal we use reactPortal, react portal create a brand-new element below your main wrapper (#root)
@@ -131,22 +131,22 @@ export const myExample = () => {
 
 #### Example:
 ```js
-import {Modal} from 'basic-modal-react'
+import {TriggerWithModal} from 'basic-modal-react'
 
 export const myExample = () => {
     
     return (
         <>
-            <Modal trigger={<YourButton label='Open Modal'}
+            <TriggerWithModal trigger={<YourButton label='Open Modal'/>}
                    positionX='right'
                    positionY='top'
                    backgroundColor='#1F1F1F'
                    closeIconColor='#fff'
                    closeComponent={<YourCloseComponent/>}
-                   closeComponentPosition={{ top: '24px', right: '24px' }}/>}
+                   closeComponentPosition={{ top: '24px', right: '24px' }}
              >
                 <YourComponent/>
-            </Modal>
+            </TriggerWithModal>
         </>
     )
 }

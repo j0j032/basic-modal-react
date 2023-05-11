@@ -1,4 +1,4 @@
-import './Modal.css'
+import './TriggerWithModal.css'
 import React, {CSSProperties, ReactNode, useCallback, useEffect, useLayoutEffect, useState} from 'react'
 import {createPortal} from "react-dom";
 
@@ -78,15 +78,15 @@ const validateProps = (props: ModalProps) => {
         return s.color !== '';
     }
     if (!validColor(props.backgroundColor || '')) {
-        throw new Error('Invalid Modal background color')
+        throw new Error('Invalid TriggerWithModal background color')
     }
 
     // check if position is valid
     if (!['center', 'top', 'bottom'].includes(props.positionY || '')) {
-        throw new Error('Invalid Modal positionY')
+        throw new Error('Invalid TriggerWithModal positionY')
     }
     if (!['center', 'left', 'right'].includes(props.positionX || '')) {
-        throw new Error('Invalid Modal positionX')
+        throw new Error('Invalid TriggerWithModal positionX')
     }
 }
 
@@ -94,7 +94,7 @@ const CloseButton = ({ color = '#1F1F1F'}: { color?: string}) => (
     <button className='defaultCloseIcon' style={{ color }}>&#215;</button>
 )
 
-const Modal: React.FC<ModalProps> = ({
+const TriggerWithModal: React.FC<ModalProps> = ({
                                          children,
                                          modalId = 'modal',
                                          closeIconColor,
@@ -153,4 +153,4 @@ const Modal: React.FC<ModalProps> = ({
     )
 }
 
-export default Modal;
+export default TriggerWithModal;
