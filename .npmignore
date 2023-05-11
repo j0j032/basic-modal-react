@@ -1,0 +1,7 @@
+demo/
+coverage/
+
+jest.config.js
+jest.setup.js
+*.test.tsx
+
