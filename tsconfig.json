@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "src",
     "target": "es5",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
