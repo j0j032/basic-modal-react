@@ -24,7 +24,9 @@ export default [
 		plugins: [
 			resolve(),
 			commonjs(),
-			typescript({ tsconfig: "./tsconfig.json" }),
+			typescript({
+				tsconfig: "./tsconfig.json",
+				exclude: ["**/*.test.tsx","**/*jest.config.js", "**/*jest.setup.ts"]}),
 			external({
 				includeDependencies: true,
 			}),
